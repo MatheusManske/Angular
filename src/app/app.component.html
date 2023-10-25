@@ -1,3 +1,33 @@
 <mat-toolbar color="primary">
-    <span>Locadora</span>
+  <button mat-button [matMenuTriggerFor]="animals" style="font-size: large; background-color: white ; color: purple;">
+    Locadora</button>
+  <mat-menu #animals="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="filmes">Filme</button>
+    <button mat-menu-item [matMenuTriggerFor]="atores">Ator</button>
+    <button mat-menu-item [matMenuTriggerFor]="diretores">Diretor</button>
+    <button mat-menu-item [matMenuTriggerFor]="classe">Classe</button>
+  </mat-menu>
+
+  <mat-menu #filmes="matMenu">
+    <button mat-menu-item (click)="crudFilme()">CRUD Filme</button>
+
+  </mat-menu>
+
+  <mat-menu #atores="matMenu">
+    <button mat-menu-item (click)="crudAtor()">CRUD Ator</button>
+
+  </mat-menu>
+
+  <mat-menu #diretores="matMenu">
+    <button mat-menu-item (click)="crudDiretor()">CRUD Diretor</button>
+
+  </mat-menu>
+
+  <mat-menu #classe="matMenu">
+    <button mat-menu-item (click)="crudClasse()">CRUD Classe</button>
+
+  </mat-menu>
+
 </mat-toolbar>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,49 @@
+<mat-card style="border-radius: 0%;">
+  <mat-toolbar style="font-size: medium; height: 50px;">Lista de Diretor</mat-toolbar>
+  <table style="scale: 85%;" mat-table [dataSource]="listaDiretor" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef> Nome</th>
+      <td mat-cell *matCellDef="let diretor"> {{diretor.nome}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef="">
+        <button (click)="AddDiretor()" mat-icon-button color="white" aria-label="Adicioanr Filme">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let diretor">
+        <button (click)="editDiretor(diretor)" mat-icon-button color color="white" aria-label="Editar Filme">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button (click)="delDiretor(diretor)"  mat-icon-button color color="warn" aria-label="Editar Filme">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+
+    </ng-container>
+
+    <ng-template #deleteDiretor>
+      <div class="modal-body text-center">
+        <p>Deseja Excluir o Filme?</p>
+        <button type="button" class="btn btn-default" (click)="ConfirmDelDiretor()">Sim</button>
+        <button type="button" class="btn btn-primary" (click)="cancelDelDiretor()"
+          style="background-color: purple; border: none;">Não</button>
+      </div>
+    </ng-template>
+
+    <ng-template #deleteMovie>
+      <div class="modal-body text-center">
+        <p>Deseja Excluir o Filme?</p>
+        <button type="button" class="btn btn-default" (click)="ConfirmDelDiretor()">Sim</button>
+        <button type="button" class="btn btn-primary"  (click)="cancelDelDiretor()" style="background-color: purple; border: none;" >Não</button>
+      </div>
+    </ng-template>
+    
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>

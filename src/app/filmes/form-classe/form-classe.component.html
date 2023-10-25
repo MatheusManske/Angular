@@ -1,0 +1,30 @@
+<mat-card>
+    <mat-toolbar style="font-size: small; height: 40px;">Inserir nova Classe</mat-toolbar>
+    <form id="formClass" [formGroup]="formC">
+        <mat-form-field class="input-campos">
+            <input matInput placeholder="Nome" formControlName="nome">
+        </mat-form-field>
+
+        <mat-form-field class="input-campos">
+            <input matInput placeholdlr="Valor" formControlName="valor">
+        </mat-form-field>
+
+        <mat-form-field class="input-campos">
+            <input matInput placeholder="Prazo" formControlName="prazo">
+        </mat-form-field>
+    
+        <mat-card-actions class="bts" align="end">
+            <button mat-raised-button (click)="EnviarClasse()" style="background-color:purple;">Enviar</button>
+            <button mat-raised-button (click)="Cancelar()"style="background-color:orangered;">Cancelar</button>
+        </mat-card-actions>
+    </form>
+</mat-card> 
+
+
+
+
+
+
+
+
+

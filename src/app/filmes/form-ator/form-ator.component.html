@@ -1,0 +1,24 @@
+<mat-card>
+    <mat-toolbar style="font-size: small; height: 40px;">Inserir novo Ator</mat-toolbar>
+    <form [formGroup]="form">
+        <mat-form-field class="input-campos">
+            <input matInput placeholder="Nome" formControlName="nome">
+        </mat-form-field>
+
+        <mat-form-field class="input-campos">
+            <input matInput placeholder="CPF" formControlName="cpf">
+        </mat-form-field>
+    
+        <mat-card-actions class="bts" align="end">
+            <button mat-raised-button (click)="Enviar()" style="background-color:purple;">Enviar</button>
+            <button mat-raised-button  (click)="Cancelar()" style="background-color:orangered;">Cancelar</button>
+        </mat-card-actions>
+    </form>
+</mat-card>
+
+
+
+
+
+
+

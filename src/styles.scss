@@ -1,6 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
-h1{
-    color: red;
-}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body{
+    background-color: #424242;
+}
+
+
+th{
+    font-size: large;
+    font-weight: bold;
+}
+
+td{
+    font-size: large;
+    font-weight: lighter;
+}

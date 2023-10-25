@@ -1,19 +1,68 @@
+<mat-card style="border-radius: 0%">
+  <mat-toolbar style="font-size: medium; height: 50px">Lista de Filmes</mat-toolbar>
+  <div *ngIf="listaFilmes | async as movies; else loading">
+    <table style="scale: 85%" mat-table [dataSource]="listaFilmes" class="mat-elevation-z8">
+      <!-- Position Column -->
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let filme">{{ filme.nome }}</td>
+      </ng-container>
 
-<table mat-table [dataSource]="filmesLista" class="mat-elevation-z8">
-    <th mat-header-cell *matHeaderCellDef> Filme</th>
+      <ng-container matColumnDef="ano">
+        <th mat-header-cell *matHeaderCellDef>Ano</th>
+        <td mat-cell *matCellDef="let filme">{{ filme.ano }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="classe">
+        <th mat-header-cell *matHeaderCellDef>Classe</th>
+        <td mat-cell *matCellDef="let filme">{{ filme.classe.nome}}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="position">
-        <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
-    </ng-container>
-                                                                                                                      
-    <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Categoria </th>
-        <td mat-cell *matCellDef="let element"> {{element.genero}} </td>
-    </ng-container>
+      <ng-container matColumnDef="categoria">
+        <th mat-header-cell *matHeaderCellDef>Categoria</th>
+        <td mat-cell *matCellDef="let filme">{{ filme.categoria }}</td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+      <ng-container matColumnDef="sinopse">
+        <th mat-header-cell *matHeaderCellDef>Sinopse</th>
+        <td mat-cell *matCellDef="let filme">{{ filme.sinopse }}</td>
+      </ng-container>
 
-<router-outlet></router-outlet>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef="">
+          <button (click)="AddFilme()" mat-icon-button color="white" aria-label="Adiconar Filme">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-header-cell>
 
+        <mat-cell *matCellDef="let filme">
+          <button (click)="editFilme(filme)" mat-icon-button  color="white" aria-label="Editar Filme">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button (click)="delFilme(filme)" mat-icon-button color="warn" aria-label="Deletar Filme">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <ng-template #loading style="display: flex; flex-direction:column;">
+
+    <div class="loadinSpin">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+
+<ng-template #deleteMovie>
+  <div class="modal-body text-center">
+    <p>Deseja Excluir o Filme?</p>
+    <button type="button" class="btn btn-default" (click)="confirmDelFime()">Sim</button>
+    <button type="button" class="btn btn-primary"  (click)="cancelDelFime()" style="background-color: purple; border: none;" >Não</button>
+  </div>
+</ng-template>
+
+</mat-card>

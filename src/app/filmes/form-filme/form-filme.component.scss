@@ -1,0 +1,24 @@
+.input-campos{
+    width: 100%;
+    scale: 75%;
+    color: white;
+}
+
+.input-campos, .input-campos *{
+    font-size: large;
+}
+
+
+.bts{
+    display: flex;
+    justify-content: center;
+}
+
+.bts > *{
+    margin: 5px;
+}
+
+mat-form-field {
+    margin-right: 12px;
+    color: red;
+  }
